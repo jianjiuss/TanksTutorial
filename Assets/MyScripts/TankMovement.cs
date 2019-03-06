@@ -13,14 +13,16 @@ namespace MyScripts
         public float speed;
         public float rotationSpeed;
 
-        // Start is called before the first frame update
+        public string horizontalName;
+        public string verticalName;
+        
+
         void Start()
         {
             rigidbody = GetComponent<Rigidbody>();
             tankAudioController = GetComponent<TankAudioController>();
         }
 
-        // Update is called once per frame
         void Update()
         {
 
@@ -28,8 +30,8 @@ namespace MyScripts
 
         private void FixedUpdate()
         {
-            float horizontal = Input.GetAxis("Horizontal1");
-            float vertical = Input.GetAxis("Vertical1");
+            float horizontal = Input.GetAxis(horizontalName);
+            float vertical = Input.GetAxis(verticalName);
 
             rigidbody.velocity = speed * transform.forward * vertical;
             rigidbody.angularVelocity = rotationSpeed * horizontal * transform.up;

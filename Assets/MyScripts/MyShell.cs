@@ -7,16 +7,28 @@ namespace MyScripts
     public class MyShell : MonoBehaviour
     {
         public GameObject shellExplosionParticleGo;
+        public int damage = 40;
+
         private AudioSource audioSource;
+        private CapsuleCollider capsuleCollider;
 
         private void Awake()
         {
             audioSource = GetComponent<AudioSource>();
+            capsuleCollider = GetComponent<CapsuleCollider>();
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            capsuleCollider.enabled = false;
             var meshRenderer = gameObject.GetComponent<MeshRenderer>();
+            meshRenderer.enabled = false;
+
+            if(other.tag.Equals("Player"))
+            {
+                var healthComponent = other.GetComponent<MyTankHealth>();
+                healthComponent.TakeDamage(damage);
+            }
 
             var tempGo = GameObject.Instantiate(shellExplosionParticleGo, transform.position, transform.rotation);
             var shellExplosionParticle = tempGo.GetComponent<ParticleSystem>();

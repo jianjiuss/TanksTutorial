@@ -28,7 +28,7 @@ namespace MyScripts
         private TankAudioController audioController;
         void Awake()
         {
-            shotPoint = ((GameObject)(GameObject.Find("ShellShotPoint"))).transform;
+            shotPoint = transform.Find("ShellShotPoint");
             canFire = true;
             fireArrowGo = fireArrow.gameObject;
             audioController = GetComponent<TankAudioController>();
