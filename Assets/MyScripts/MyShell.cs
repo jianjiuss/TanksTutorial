@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,11 @@ namespace MyScripts
 
         private void OnTriggerEnter(Collider other)
         {
+            if(other.tag.Equals("Explosion"))
+            {
+                return;
+            }
+
             capsuleCollider.enabled = false;
             var meshRenderer = gameObject.GetComponent<MeshRenderer>();
             meshRenderer.enabled = false;

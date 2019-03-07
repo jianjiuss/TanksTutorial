@@ -13,7 +13,14 @@ public class MyCameraController : MonoBehaviour
     
     private Vector3 midPointBetweenPlayer;
     private Vector3 offsetBetweenMidPointAndCamera;
-    private float offsetBetweenDisAndSize;
+    public float offsetBetweenDisAndSize = 2;
+
+    private bool stop;
+    public bool Stop
+    {
+        get { return stop; }
+        set { stop = value; }
+    }
 
     private void Awake()
     {
@@ -22,8 +29,8 @@ public class MyCameraController : MonoBehaviour
 
     void Start()
     {
-        float distanceBetweenPlayer = (player1.position - player2.position).magnitude;
-        offsetBetweenDisAndSize = distanceBetweenPlayer / camera.orthographicSize;
+        //float distanceBetweenPlayer = (player1.position - player2.position).magnitude;
+        //offsetBetweenDisAndSize = distanceBetweenPlayer / camera.orthographicSize;
 
         midPointBetweenPlayer = (player1.position + player2.position) / 2;
         
@@ -37,6 +44,11 @@ public class MyCameraController : MonoBehaviour
 
     void Update()
     {
+        if(Stop)
+        {
+            return;
+        }
+
         midPointBetweenPlayer = (player1.position + player2.position) / 2;
         testSphere.transform.SetPositionAndRotation(midPointBetweenPlayer, Quaternion.identity);
         Vector3 curCameraPoint = midPointBetweenPlayer + offsetBetweenMidPointAndCamera;

@@ -71,6 +71,7 @@
     <Compile Include="Assets\MyScripts\FireController.cs" />
     <Compile Include="Assets\MyScripts\GameManager.cs" />
     <Compile Include="Assets\MyScripts\MyCameraController.cs" />
+    <Compile Include="Assets\MyScripts\MyExplosion.cs" />
     <Compile Include="Assets\MyScripts\MyShell.cs" />
     <Compile Include="Assets\MyScripts\MyTankHealth.cs" />
     <Compile Include="Assets\MyScripts\TankAudioController.cs" />

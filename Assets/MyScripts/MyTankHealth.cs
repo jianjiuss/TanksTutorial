@@ -56,7 +56,10 @@ namespace MyScripts
 
             audioController.SetEngineState(EngineState.Stop);
             GameObject.Destroy(go, explosionParticle.main.duration);
+
             GameObject.Destroy(gameObject);
+
+            GameManager.Ins.GameOver();
         }
     }
 }
