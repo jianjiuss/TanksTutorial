@@ -71,7 +71,7 @@ namespace MyScripts
             }
         }
 
-        private void Fire(float holdTime)
+        public void Fire(float holdTime)
         {
             var shellGo = GameObject.Instantiate(shellPrefabs, shotPoint.position, shotPoint.rotation) as GameObject;
             Rigidbody rigidbody = shellGo.GetComponent<Rigidbody>();

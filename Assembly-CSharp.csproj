@@ -618,11 +618,13 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedVector4.cs" />
     <Compile Include="Assets\MyScripts\FireController.cs" />
     <Compile Include="Assets\MyScripts\GameManager.cs" />
+    <Compile Include="Assets\MyScripts\MyBehaviorDesignerScript\FireAction.cs" />
     <Compile Include="Assets\MyScripts\MyCameraController.cs" />
     <Compile Include="Assets\MyScripts\MyExplosion.cs" />
     <Compile Include="Assets\MyScripts\MyShell.cs" />
     <Compile Include="Assets\MyScripts\MyTankHealth.cs" />
     <Compile Include="Assets\MyScripts\TankAudioController.cs" />
+    <Compile Include="Assets\MyScripts\TankMeshRenderer.cs" />
     <Compile Include="Assets\MyScripts\TankMovement.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />

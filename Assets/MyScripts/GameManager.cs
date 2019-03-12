@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BehaviorDesigner.Runtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,25 @@ namespace MyScripts
 
         public GameObject gameoverTextGo;
 
+        private bool isGameOver;
+        private bool waitForRestart;
+
+        public bool IsGameOver
+        {
+            get { return isGameOver; }
+            set
+            {
+                isGameOver = value;
+                if(isGameOver)
+                {
+                    var cameraControllerGo = GameObject.FindGameObjectWithTag("MainCamera");
+                    var cameraController = cameraControllerGo.GetComponent<MyCameraController>();
+                    cameraController.Stop = true;
+                }
+            }
+        }
+
+
         void Awake()
         {
             if(ins == null)
@@ -34,7 +54,8 @@ namespace MyScripts
                 Destroy(gameObject);
                 return;
             }
-            
+
+            GlobalVariables.Instance.SetVariableValue("GameManager", gameObject);
         }
 
         private void Start()
@@ -49,19 +70,21 @@ namespace MyScripts
         {
             gameoverTextGo = GameObject.Find("GameOverText");
             gameoverTextGo.SetActive(false);
+            IsGameOver = false;
+            waitForRestart = false;
         }
 
         void Update()
         {
-
+            if(IsGameOver && !waitForRestart)
+            {
+                GameOver();
+                waitForRestart = true;
+            }
         }
 
         public void GameOver()
         {
-            var cameraControllerGo = GameObject.FindGameObjectWithTag("MainCamera");
-            var cameraController = cameraControllerGo.GetComponent<MyCameraController>();
-            cameraController.Stop = true;
-
             GameObject winPlayer = GameObject.FindGameObjectWithTag("Player");
 
             var gameoverText = gameoverTextGo.GetComponent<Text>();
@@ -75,6 +98,11 @@ namespace MyScripts
         {
             yield return new WaitForSeconds(5);
             SceneManager.LoadScene("main");
+        }
+        private void OnGUI()
+        {
+            GUI.Label(new Rect(10, 10, 100, 20), IsGameOver.ToString());
+            GUI.Label(new Rect(10, 30, 100, 20), waitForRestart.ToString());
         }
     }
 }

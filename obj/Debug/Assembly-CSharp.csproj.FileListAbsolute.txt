@@ -280,3 +280,4 @@ C:\我的文件\项目\个人\Unity\TanksTutorial\obj\Debug\Assembly-CSharp.cspr
 C:\我的文件\项目\个人\Unity\TanksTutorial\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\我的文件\项目\个人\Unity\TanksTutorial\obj\Debug\Assembly-CSharp.dll
 C:\我的文件\项目\个人\Unity\TanksTutorial\obj\Debug\Assembly-CSharp.pdb
+C:\我的文件\项目\个人\Unity\TanksTutorial\Temp\bin\Debug\BehaviorDesigner.Runtime.dll
